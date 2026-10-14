@@ -1,4 +1,9 @@
 # SOC Copilot
+**Live demo:** https://soc-copilot-kr.greenpond-4757b7c0.koreacentral.azurecontainerapps.io/
+
+> **Note:** The app scales to zero when idle to save cost, so the first load after a quiet period can take 10-30 seconds. Please wait for it to start.
+
+**Deployment stack:** Docker, GitHub Actions (CI), Microsoft Azure Container Apps
 
 An LLM + RAG assistant that turns ML-detected attack alerts into cited incident response reports.
 It is the response layer for my [DFIR detection project](https://github.com/sambhav006/AI-DFIR-Tool): the detector classifies
@@ -75,7 +80,14 @@ Caveats:
 - NIST SP 800-61 Rev. 2 has been withdrawn and superseded by Rev. 3; Rev. 2 is used here.
 - The demo uses a shared free-tier Gemini key with a per-session request cap. Do not paste real incident data.
   Reports are AI-generated and need analyst review.
+  
+## Deployment
 
+- The app is containerized with Docker (CPU-only PyTorch, embedding model baked into the image so cold starts don't download it).
+- A GitHub Actions workflow (`.github/workflows/docker.yml`) builds the image on every push to `main` and publishes it to GitHub Container Registry.
+- The image runs on Azure Container Apps. The Gemini API key is stored as a platform secret and injected as an environment variable, never in the repo or image.
+
+  
 ## Run locally
 
 ```bash
