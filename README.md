@@ -65,14 +65,14 @@ Caveats:
 - I wrote the questions after seeing some retrieval results, so they are easier than an independent test.
 - Two expected answers (Q7, Q28) were corrected after the first run. The score before the correction was
   hit@3 83%.
-- A held-out set written without looking at the results is [NOT YET RUN / RESULT: ...].
+- A held-out set of queries, written without looking at the results, has not been run yet.
 
 ## Known limitations
 
 - Short or ambiguous queries retrieve poorly ("port scan"), and similar sub-techniques get confused
   (password spraying vs. password guessing).
 - The citation check verifies that citations exist and that action steps carry one. It does **not** verify that the
-  source supports the claim. Manual audit: [RESULT, e.g. "checked N citations in 3 reports; X were supported"].
+  source supports the claim. - A manual audit of citations against the sources has not been done yet. The automated check only verifies that citations exist and that action steps carry one.
 - NIST and CISA playbooks are generic response frameworks (the CISA one is written for US federal agencies).
 - The class-to-technique mapping involves judgment (for example, "Brute Force" covers both FTP and SSH guessing).
 - Tested on synthetic sample alerts, not live output from the detector.
