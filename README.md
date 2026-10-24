@@ -1,4 +1,6 @@
 # SOC Copilot
+
+![CI](https://github.com/sambhav006/soc-copilot/actions/workflows/ci.yml/badge.svg)
 **Live demo:** https://soc-copilot-kr.greenpond-4757b7c0.koreacentral.azurecontainerapps.io/
 
 > **Note:** The app scales to zero when idle to save cost, so the first load after a quiet period can take 10-30 seconds. Please wait for it to start.
