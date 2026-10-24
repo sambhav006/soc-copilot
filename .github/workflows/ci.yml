@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+      - name: Unit tests
+        env:
+          GEMINI_API_KEY: dummy-key-for-tests
+        run: python -m pytest -q
+      - name: Retrieval quality gate
+        run: python src/evaluate.py --min-hit3 0.85

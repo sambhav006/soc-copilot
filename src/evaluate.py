@@ -89,3 +89,11 @@ if __name__ == "__main__":
         print("\nMISSES (what was retrieved instead):")
         for q, got in misses:
             print(f'  Q{q["id"]} "{q["query"][:55]}" expected {q["expected"]} got {got}')
+        # CI gate: exit with an error if retrieval quality drops below the threshold
+    if "--min-hit3" in sys.argv:
+        threshold = float(sys.argv[sys.argv.index("--min-hit3") + 1])
+        score = tot["hitk"] / tot["n"]
+        if score < threshold:
+            print(f"FAIL: hit@3 {score:.0%} is below the threshold of {threshold:.0%}")
+            sys.exit(1)
+        print(f"PASS: hit@3 {score:.0%} >= {threshold:.0%}")
