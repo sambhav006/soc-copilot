@@ -11,7 +11,6 @@ network traffic, and SOC Copilot explains the alert and recommends what to do, w
 
 **Live demo:** https://soc-copilot-sambhav.streamlit.app/  (free hosting: the app sleeps when idle, so the first load may take a minute)
 
-![screenshot](docs/screenshot.png)
 
 ## What it does
 
